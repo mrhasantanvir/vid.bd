@@ -22,6 +22,15 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+# 2.5 Generate Prisma Client and Migrate
+echo "💾 Migrating database..."
+npx prisma generate
+npx prisma db push # Use db push for faster sync on aaPanel if not using manual migrations
+if [ $? -ne 0 ]; then
+    echo "❌ Database migration failed. Deployment aborted."
+    exit 1
+fi
+
 # 3. Build the project
 echo "🛠 Building the project..."
 npm run build

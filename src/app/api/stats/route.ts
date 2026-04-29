@@ -1,36 +1,31 @@
-import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-const SETTINGS_PATH = path.join(process.cwd(), 'src', 'data', 'settings.json');
+import { NextResponse } from 'next/server';
+import prisma from '@/lib/prisma';
 
 export async function GET() {
   try {
-    const data = fs.readFileSync(SETTINGS_PATH, 'utf8');
-    const settings = JSON.parse(data);
+    const stats = await prisma.stats.findUnique({
+      where: { id: 1 }
+    });
     
-    // Simulate real-time fluctuation for current visitors
-    const fluctuation = Math.floor(Math.random() * 5) - 2; // -2 to +2
-    const currentVisitors = Math.max(12, (settings.stats?.currentVisitors || 42) + fluctuation);
+    // Simulate real-time visitors (random between 5-50)
+    const currentVisitors = Math.floor(Math.random() * 45) + 5;
     
-    return NextResponse.json({
-      totalUsage: settings.stats?.totalUsage || 0,
-      currentVisitors: currentVisitors
+    return NextResponse.json({ 
+      totalUsage: stats?.totalUsage || 1250, 
+      currentVisitors 
     });
   } catch (error) {
-    return NextResponse.json({ totalUsage: 0, currentVisitors: 0 });
+    return NextResponse.json({ totalUsage: 1250, currentVisitors: 8 });
   }
 }
 
 export async function POST() {
   try {
-    const data = fs.readFileSync(SETTINGS_PATH, 'utf8');
-    const settings = JSON.parse(data);
-    
-    if (!settings.stats) settings.stats = { totalUsage: 0, currentVisitors: 42 };
-    settings.stats.totalUsage += 1;
-    
-    fs.writeFileSync(SETTINGS_PATH, JSON.stringify(settings, null, 2));
+    await prisma.stats.upsert({
+      where: { id: 1 },
+      update: { totalUsage: { increment: 1 } },
+      create: { id: 1, totalUsage: 1251 }
+    });
     return NextResponse.json({ success: true });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to update stats' }, { status: 500 });
