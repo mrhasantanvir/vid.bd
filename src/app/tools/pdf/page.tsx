@@ -41,7 +41,7 @@ export default function PdfTools() {
       }
       
       const pdfBytes = await mergedPdf.save();
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const blob = new Blob([pdfBytes.buffer], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       
       const link = document.createElement('a');
