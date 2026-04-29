@@ -85,8 +85,12 @@ export default function AdInterim({ onComplete, isVisible }: AdInterimProps) {
             borderRadius: '16px',
             padding: '24px',
             marginBottom: '24px',
-            border: '1px dashed var(--primary)'
+            border: '1px dashed var(--primary)',
+            overflow: 'hidden'
           }}>
+            {ad.imageUrl && (
+              <img src={ad.imageUrl} alt={ad.title} style={{ width: '100%', maxHeight: '180px', objectFit: 'cover', borderRadius: '12px', marginBottom: '16px' }} />
+            )}
             <h4 style={{ color: 'var(--secondary)', marginBottom: '8px' }}>{ad.title}</h4>
             <p style={{ fontSize: '0.9rem', marginBottom: '16px' }}>
               {ad.description}

@@ -28,13 +28,13 @@ export default function Navbar() {
         }}>
           <Download size={20} color="white" />
         </div>
-        <span style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.5px' }}>
+        <span style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.5px', marginRight: '20px' }}>
           vid<span style={{ color: 'var(--primary)' }}>.bd</span>
         </span>
       </Link>
 
       <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-        <div className="hide-mobile" style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
+        <div className="hide-mobile" style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
           <Link href="#downloader" className="nav-link">ডাউনলোডার</Link>
           <Link href="#converter" className="nav-link">কনভার্টার</Link>
           <Link href="#tools" className="nav-link">সব টুলস</Link>

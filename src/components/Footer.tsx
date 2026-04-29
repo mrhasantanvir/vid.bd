@@ -34,7 +34,7 @@ export default function Footer() {
           <div>
             <h4 style={{ marginBottom: '16px' }}>কুইক লিঙ্কস</h4>
             <ul style={{ listStyle: 'none', padding: 0 }}>
-              <li style={{ marginBottom: '8px' }}><Link href="#downloader" style={{ opacity: 0.7 }}>ভিডিও ডাওনলোডার</Link></li>
+              <li style={{ marginBottom: '8px' }}><Link href="#downloader" style={{ opacity: 0.7 }}>ভিডিও ডাউনলোড</Link></li>
               <li style={{ marginBottom: '8px' }}><Link href="#converter" style={{ opacity: 0.7 }}>ফাইল কনভার্টার</Link></li>
               <li style={{ marginBottom: '8px' }}><Link href="#pdf" style={{ opacity: 0.7 }}>পিডিএফ টুলস</Link></li>
             </ul>
