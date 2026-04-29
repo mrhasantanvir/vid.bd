@@ -1,0 +1,30 @@
+{
+  "ads": [
+    {
+      "id": "1",
+      "title": "Organic Mango Special!",
+      "description": "Get the freshest Rajshahi Mangoes delivered to your doorstep. Limited time offer!",
+      "link": "https://tks.bd",
+      "buttonText": "Shop Now",
+      "active": true
+    },
+    {
+      "id": "2",
+      "title": "BusinessConnect",
+      "description": "Manage your business like a pro with our cloud ERP solutions.",
+      "link": "https://businessconnect.bd",
+      "buttonText": "Get Started",
+      "active": true
+    }
+  ],
+  "ecosystem": [
+    { "name": "TKS.bd", "url": "https://tks.bd" },
+    { "name": "BusinessConnect", "url": "https://businessconnect.bd" },
+    { "name": "RajshahiRam", "url": "https://rajshahiram.com.bd" },
+    { "name": "Pansoft", "url": "https://pansoft.bd" }
+  ],
+  "stats": {
+    "totalUsage": 1250,
+    "currentVisitors": 42
+  }
+}
