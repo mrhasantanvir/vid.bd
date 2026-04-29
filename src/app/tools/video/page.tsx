@@ -14,9 +14,13 @@ export default function VideoTools() {
   const [showAd, setShowAd] = useState(false);
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState('');
-  const ffmpegRef = useRef(new FFmpeg());
+  const ffmpegRef = useRef<FFmpeg | null>(null);
 
   const loadFFmpeg = async () => {
+    if (!ffmpegRef.current) {
+      ffmpegRef.current = new FFmpeg();
+    }
+    
     const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd';
     const ffmpeg = ffmpegRef.current;
     
@@ -51,7 +55,7 @@ export default function VideoTools() {
       setStatus('Loading FFmpeg...');
       await loadFFmpeg();
       
-      const ffmpeg = ffmpegRef.current;
+      const ffmpeg = ffmpegRef.current!;
       const inputName = 'input_video';
       const outputName = 'output_audio.mp3';
 
