@@ -26,8 +26,9 @@ fi
 echo "💾 Migrating database..."
 npx prisma generate
 npx prisma db push # Use db push for faster sync on aaPanel if not using manual migrations
+npx prisma db seed # Populate initial data
 if [ $? -ne 0 ]; then
-    echo "❌ Database migration failed. Deployment aborted."
+    echo "❌ Database migration/seed failed. Deployment aborted."
     exit 1
 fi
 
