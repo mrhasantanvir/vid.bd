@@ -63,7 +63,7 @@ export default function VideoTools() {
 
       setStatus('Saving result...');
       const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([data], { type: 'audio/mp3' });
+      const blob = new Blob([data as any], { type: 'audio/mp3' });
       const url = URL.createObjectURL(blob);
       
       const link = document.createElement('a');
