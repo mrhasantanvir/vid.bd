@@ -1,10 +1,6 @@
-import { PrismaClient } from '@prisma/client'
+const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient({
-  datasources: {
-    db: {
-      url: process.env.DATABASE_URL
-    }
-  }
+  datasourceUrl: process.env.DATABASE_URL
 })
 
 async function main() {
@@ -31,9 +27,13 @@ async function main() {
   ]
 
   for (const link of links) {
-    await prisma.ecosystemLink.create({
-      data: link
-    })
+    try {
+      await prisma.ecosystemLink.create({
+        data: link
+      })
+    } catch (e) {
+      // Ignore if already exists
+    }
   }
 
   // Initial Stats
